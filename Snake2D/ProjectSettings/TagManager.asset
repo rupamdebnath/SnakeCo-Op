@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 1313117157
+    locked: 0
+  - name: GameArea
+    uniqueID: 696042467
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: top
+    uniqueID: 4084428709
     locked: 0
