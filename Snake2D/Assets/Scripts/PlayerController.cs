@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
  
     public Rigidbody2D rigidbody2d;
     public float speed;
-    public GameObject player;
+    //public GameObject player;
 
     private bool isGameOver = false;
  
@@ -28,11 +28,6 @@ public class PlayerController : MonoBehaviour
         else if(Input.GetAxis("Vertical")<0) //negative
         {
             rigidbody2d.velocity = new Vector2(0f, -speed);
-        }
-        else if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
-        {
-            //stop
-            rigidbody2d.velocity = new Vector2(0f, 0f);
         }
     }
 

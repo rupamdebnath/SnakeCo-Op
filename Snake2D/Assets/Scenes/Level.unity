@@ -295,9 +295,9 @@ GameObject:
   m_Component:
   - component: {fileID: 875544724}
   - component: {fileID: 875544723}
+  - component: {fileID: 875544725}
   - component: {fileID: 875544727}
   - component: {fileID: 875544726}
-  - component: {fileID: 875544725}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -381,11 +381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ed934bc9006804e8b8a9201414e292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody2d: {fileID: 0}
+  rigidbody2d: {fileID: 875544727}
   speed: 2
-  player: {fileID: 0}
-  gameWonPanel: {fileID: 0}
-  gameLostPanel: {fileID: 0}
 --- !u!61 &875544726
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -427,7 +424,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
