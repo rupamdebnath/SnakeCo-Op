@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
+    public GameObject snakeBody;
     Vector3 originalAngles;
     private void Awake()
     {
@@ -47,6 +48,14 @@ public class PlayerController : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(transform.localScale.x, (Mathf.Abs(transform.localScale.y)*-1), transform.localScale.z);
             rigidbody2d.velocity = new Vector2(0f, -speed);
+        }        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Apple")
+        {
+            Destroy(collision.gameObject);
         }
     }
 
