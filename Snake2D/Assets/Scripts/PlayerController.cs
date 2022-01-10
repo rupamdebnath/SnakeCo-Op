@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public Transform snakeBodyPrefab;
 
     private float Xpos, Ypos;
+
+    private FoodController _foodcontroller;
       
     private void Start()
     {
@@ -65,7 +67,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Apple")
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            _foodcontroller = collision.GetComponent<FoodController>();
+            _foodcontroller.RandomizePosition();
+
             Grow();
 
             //Instantiate(snakeBodyPrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -78,7 +83,6 @@ public class PlayerController : MonoBehaviour
 
         snakeSegments.Add(segment);
         Debug.Log(snakeSegments.Count);
-
     }
 
     private void ReturnPosition()
