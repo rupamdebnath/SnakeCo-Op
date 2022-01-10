@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6623497743546808909}
   - component: {fileID: 6623497743546808908}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ed934bc9006804e8b8a9201414e292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snakeBodyPrefab: {fileID: 8847522718089093087, guid: 459e4e658748be74a84562b038f3f131,
+    type: 3}
   rigidbody2d: {fileID: 6623497743546808909}
   speed: 2
 --- !u!50 &6623497743546808909
