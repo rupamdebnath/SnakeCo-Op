@@ -16,8 +16,6 @@ public class PlayerController : MonoBehaviour
 
     private Transform segment;
 
-    private float distance, Xpos, Ypos;
-
     private void Awake()
     {
         canMoveRight= canMoveLeft= canMoveUp= canMoveDown = true;
@@ -32,9 +30,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public float speed;    
 
+    //Get Keyboard inputs and set movement rules, rotate the snake head as well respectively
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.D) && canMoveRight) //positive
         {
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
@@ -43,8 +41,6 @@ public class PlayerController : MonoBehaviour
             canMoveLeft = false;
             canMoveUp = true;
             canMoveDown = true;
-            Xpos = 0.4f;
-            Ypos = 0f;
         }
         else if(Input.GetKeyDown(KeyCode.A) && canMoveLeft) //negative
         {
@@ -54,8 +50,6 @@ public class PlayerController : MonoBehaviour
             canMoveRight = false;
             canMoveUp = true;
             canMoveDown = true;
-            Xpos = -0.4f;
-            Ypos = 0;
         }
         else if(Input.GetKeyDown(KeyCode.W) && canMoveUp) //positive
         {
@@ -65,8 +59,6 @@ public class PlayerController : MonoBehaviour
             canMoveDown = false;
             canMoveLeft = true;
             canMoveRight = true;
-            Xpos = 0f;
-            Ypos = -0.4f;
         }
         else if (Input.GetKeyDown(KeyCode.S) && canMoveDown)  //negative
         {
@@ -76,23 +68,19 @@ public class PlayerController : MonoBehaviour
             canMoveUp = false;
             canMoveLeft = true;
             canMoveRight = true;
-            Xpos = 0f;
-            Ypos = 0.4f;
         }        
     }
 
+    //Snake tails following the last segment, shift the draw of each object to its previous object's position
     private void FixedUpdate()
     {
         for (int i = snakeSegments.Count - 1; i > 0; i--)
         {
-            distance = Vector2.Distance(snakeSegments[i].position, snakeSegments[i - 1].position);
-            Debug.Log("distance: " + distance);
             snakeSegments[i].position = snakeSegments[i - 1].position;
-            Debug.Log("snakeSegments[i].position");
         }
-
     }
 
+    //When Snake collides with Apple trigger
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Apple")
@@ -103,6 +91,7 @@ public class PlayerController : MonoBehaviour
             Grow();
         }
     }
+    //Spawn segments of snake's tail
     private void Grow()
     {
         segment = Instantiate(this.snakeBodyPrefab);
@@ -111,16 +100,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log(segment.position);
         snakeSegments.Add(segment);
         Debug.Log(snakeSegments.Count);
-    }
-
-    private void SegmentsPosition()
-    {
-        for (int i = snakeSegments.Count - 1; i > 0; i--)
-        {
-            //Debug.Log(snakeSegments[i].position + " should go to " + snakeSegments[i - 1].position);
-            snakeSegments[i].position = snakeSegments[i - 1].position;
-            Debug.Log("Looping through " + i);
-        }
     }
 
 }
