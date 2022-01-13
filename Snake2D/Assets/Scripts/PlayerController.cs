@@ -8,12 +8,20 @@ public class PlayerController : MonoBehaviour
 
     public Transform snakeBodyPrefab;
 
-    private float Xpos, Ypos;
+    //private float Xpos, Ypos;
 
-    private bool canMoveRight, canMoveLeft, canMoveUp, canMoveDown = true;
+    private bool canMoveRight, canMoveLeft, canMoveUp, canMoveDown;
 
     private FoodController _foodcontroller;
-      
+
+    private Transform segment;
+
+    private float distance, Xpos, Ypos;
+
+    private void Awake()
+    {
+        canMoveRight= canMoveLeft= canMoveUp= canMoveDown = true;
+    }
     private void Start()
     {
         snakeSegments = new List<Transform>();
@@ -26,60 +34,63 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //for (int i = snakeSegments.Count - 1; i > 0; i--)
-        //{
-        //    snakeSegments[i].position = new Vector3((snakeSegments[i - 1].position.x + Xpos), (snakeSegments[i - 1].position.y + Ypos), snakeSegments[i - 1].position.z);
-        //}
 
-        for (int i = snakeSegments.Count - 1; i > 0; i--)
-        {
-            snakeSegments[i].position = snakeSegments[i-1].position;
-        }
-
-            if (Input.GetKeyDown(KeyCode.D) && canMoveRight) //positive
+        if (Input.GetKeyDown(KeyCode.D) && canMoveRight) //positive
         {
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
             transform.localRotation = Quaternion.Euler(0, 0, -90);
             rigidbody2d.velocity = new Vector2(speed, 0f);
-            Xpos = -0.4f;
-            Ypos = 0;
             canMoveLeft = false;
             canMoveUp = true;
             canMoveDown = true;
+            Xpos = 0.4f;
+            Ypos = 0f;
         }
         else if(Input.GetKeyDown(KeyCode.A) && canMoveLeft) //negative
         {
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
             transform.localRotation =  Quaternion.Euler(0, 0, 90);
             rigidbody2d.velocity = new Vector2(-speed, 0f);
-            Xpos = 0.4f;
-            Ypos = 0;
             canMoveRight = false;
             canMoveUp = true;
             canMoveDown = true;
+            Xpos = -0.4f;
+            Ypos = 0;
         }
         else if(Input.GetKeyDown(KeyCode.W) && canMoveUp) //positive
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
             rigidbody2d.velocity = new Vector2(0f, speed);
-            Ypos = -0.4f;
-            Xpos = 0;
             canMoveDown = false;
             canMoveLeft = true;
             canMoveRight = true;
+            Xpos = 0f;
+            Ypos = -0.4f;
         }
         else if (Input.GetKeyDown(KeyCode.S) && canMoveDown)  //negative
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(transform.localScale.x, (Mathf.Abs(transform.localScale.y)*-1), transform.localScale.z);
             rigidbody2d.velocity = new Vector2(0f, -speed);
-            Ypos = 0.4f;
-            Xpos = 0;
             canMoveUp = false;
             canMoveLeft = true;
             canMoveRight = true;
+            Xpos = 0f;
+            Ypos = 0.4f;
         }        
+    }
+
+    private void FixedUpdate()
+    {
+        for (int i = snakeSegments.Count - 1; i > 0; i--)
+        {
+            distance = Vector2.Distance(snakeSegments[i].position, snakeSegments[i - 1].position);
+            Debug.Log("distance: " + distance);
+            snakeSegments[i].position = snakeSegments[i - 1].position;
+            Debug.Log("snakeSegments[i].position");
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -89,21 +100,27 @@ public class PlayerController : MonoBehaviour
             //Destroy(collision.gameObject);
             _foodcontroller = collision.GetComponent<FoodController>();
             _foodcontroller.RandomizePosition();
-
             Grow();
-
-            //Instantiate(snakeBodyPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
     private void Grow()
     {
-        Transform segment = Instantiate(this.snakeBodyPrefab);
+        segment = Instantiate(this.snakeBodyPrefab);
         //segment.position = snakeSegments[snakeSegments.Count - 1].position;
-
-        //segment.position = new Vector3((snakeSegments[snakeSegments.Count - 1].position.x + Xpos), (snakeSegments[snakeSegments.Count - 1].position.y + Ypos), snakeSegments[snakeSegments.Count - 1].position.z);
-        segment.position = new Vector3(0, 0, 0);
+        segment.position = new Vector2((snakeSegments[snakeSegments.Count - 1].position.x), (snakeSegments[snakeSegments.Count - 1].position.y));
+        Debug.Log(segment.position);
         snakeSegments.Add(segment);
         Debug.Log(snakeSegments.Count);
+    }
+
+    private void SegmentsPosition()
+    {
+        for (int i = snakeSegments.Count - 1; i > 0; i--)
+        {
+            //Debug.Log(snakeSegments[i].position + " should go to " + snakeSegments[i - 1].position);
+            snakeSegments[i].position = snakeSegments[i - 1].position;
+            Debug.Log("Looping through " + i);
+        }
     }
 
 }
