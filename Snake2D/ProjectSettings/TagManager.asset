@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Apple
   - Wall
+  - GridArea
+  - PlayArea
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     private Transform segment;
 
+    private Vector3 oldPosition;
+    public BoxCollider2D grid;
+
     private void Awake()
     {
         canMoveRight= canMoveLeft= canMoveUp= canMoveDown = true;
@@ -68,7 +71,8 @@ public class PlayerController : MonoBehaviour
             canMoveUp = false;
             canMoveLeft = true;
             canMoveRight = true;
-        }        
+        }
+
     }
 
     //Snake tails following the last segment, shift the draw of each object to its previous object's position
@@ -83,6 +87,7 @@ public class PlayerController : MonoBehaviour
     //When Snake collides with Apple trigger
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Vector3 oldPosition = transform.position;
         if (collision.tag == "Apple")
         {
             //Destroy(collision.gameObject);
@@ -90,12 +95,19 @@ public class PlayerController : MonoBehaviour
             _foodcontroller.RandomizePosition();
             Grow();
         }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        oldPosition = transform.position;
+        if (other.tag == "PlayArea")
+            transform.position = new Vector2(-oldPosition.x, -oldPosition.y);
     }
     //Spawn segments of snake's tail
     private void Grow()
     {
-        segment = Instantiate(this.snakeBodyPrefab);
-        //segment.position = snakeSegments[snakeSegments.Count - 1].position;
+        segment = Instantiate(this.snakeBodyPrefab);        
         segment.position = new Vector2((snakeSegments[snakeSegments.Count - 1].position.x), (snakeSegments[snakeSegments.Count - 1].position.y));
         Debug.Log(segment.position);
         snakeSegments.Add(segment);
