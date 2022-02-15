@@ -117,28 +117,9 @@ public class PlayerController : MonoBehaviour
             _foodcontroller.RandomizePosition();
             Grow();
         }
-        //else if (collision.tag == "PlayArea")
-        //{
-        //    oldPosition = transform.position;
-        //    if (oldPosition.x < 0)
-        //        oldPosition.x = oldPosition.x + 2;
-        //    else if (oldPosition.x > 0)
-        //        oldPosition.x = oldPosition.x - 2;
-        //    if (oldPosition.y < 0)
-        //        oldPosition.y = oldPosition.y + 2;
-        //    else if (oldPosition.y > 0)
-        //        oldPosition.y = oldPosition.x - 2;
-        //    transform.position = new Vector2(-oldPosition.x, -oldPosition.y);
-        //}
+
     }
 
-    //private void OnTriggerExit2D(Collider2D other)
-    //{
-    //    oldPosition = transform.position;
-    //    if (other.tag == "PlayArea")
-    //        transform.position = new Vector2(-oldPosition.x, -oldPosition.y);
-    //}
-    //Spawn segments of snake's tail
     private void Grow()
     {
         segment = Instantiate(this.snakeBodyPrefab);        
