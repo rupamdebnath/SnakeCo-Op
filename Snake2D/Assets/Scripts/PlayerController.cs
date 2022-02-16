@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public ScoreController scoreController;
 
+    public GameObject gameOver;
+
     //private float Xpos, Ypos;
 
     private bool canMoveRight, canMoveLeft, canMoveUp, canMoveDown;
@@ -124,6 +126,7 @@ public class PlayerController : MonoBehaviour
         else if (collision.tag == "Body")
         {
             //Death for the player
+            gameOver.SetActive(true);
             Die();
         }
 
@@ -131,8 +134,8 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        rigidbody2d.velocity = Vector2.zero;
-        gameObject.GetComponent<PlayerController>().enabled = false;               
+        rigidbody2d.velocity = Vector2.zero;        
+        gameObject.GetComponent<PlayerController>().enabled = false;        
     }
 
     private void Grow()
