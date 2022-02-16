@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreController : MonoBehaviour
+public class ScoreController2 : MonoBehaviour
 {
 
     private TMPro.TextMeshProUGUI scoreText;
@@ -28,6 +28,6 @@ public class ScoreController : MonoBehaviour
 
     private void RefreshUI()
     {
-        scoreText.text = "P1 Score: " + score;
+        scoreText.text = "P2 Score: " + score;
     }
 }
