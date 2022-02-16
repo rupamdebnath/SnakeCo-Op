@@ -24,9 +24,11 @@ public class Player2Controller : MonoBehaviour
     private Vector3 oldPosition;
     public BoxCollider2D grid;
 
+    private Player2Controller p2controller;
     private void Awake()
     {
         canMoveRight = canMoveLeft = canMoveUp = canMoveDown = true;
+        p2controller = gameObject.GetComponent<Player2Controller>();
     }
     private void Start()
     {
@@ -132,10 +134,19 @@ public class Player2Controller : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.collider.tag == "Player")
+        {            
+            Die();
+            gameOver.SetActive(true);
+        }
+    }
+
     private void Die()
     {
-        rigidbody2d.velocity = Vector2.zero;
-        gameObject.GetComponent<Player2Controller>().enabled = false;
+        this.rigidbody2d.velocity = Vector3.zero;
+        p2controller.enabled = false;
     }
 
     private void Grow()

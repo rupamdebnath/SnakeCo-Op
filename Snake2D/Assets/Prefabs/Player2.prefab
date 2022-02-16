@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03894338, y: 1.3879611}
+  m_Offset: {x: 0.00088500977, y: 1.1921933}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8620698, y: 0.13407779}
+  m_Size: {x: 1.4993362, y: 0.46584105}
   m_EdgeRadius: 0
 --- !u!114 &7391697707401031760
 MonoBehaviour:
@@ -145,10 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snakeBodyPrefab: {fileID: 8847522718089093087, guid: a2bc630ed5bb9f04d801c8c5dadfa70c,
     type: 3}
-  scoreController: {fileID: 956638350645639206, guid: c45b9840f44547442ae885f1bee3fa72,
-    type: 3}
-  gameOver: {fileID: 5209173868388156223, guid: d82df8cd77d3dc241b87ece8e013b167,
-    type: 3}
+  scoreController2: {fileID: 0}
+  gameOver: {fileID: 0}
   grid: {fileID: 8823941385227245551, guid: 51bd6ce08ba16f248b363b0f34f60027, type: 3}
   rigidbody2d: {fileID: 5006601859909273021}
   speed: 10
