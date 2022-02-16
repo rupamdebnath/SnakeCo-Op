@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         snakeSegments = new List<Transform>();
         snakeSegments.Add(this.transform);
-        Debug.Log(snakeSegments.Count);
+        //Debug.Log(snakeSegments.Count);
     }
 
     public Rigidbody2D rigidbody2d;
@@ -73,7 +74,7 @@ public class PlayerController : MonoBehaviour
             canMoveRight = true;
         }
         oldPosition = transform.position;
-        Debug.Log("Old POsition:" + oldPosition);
+        //Debug.Log("Old POsition:" + oldPosition);
         if (oldPosition.x < -22 || oldPosition.x > 22 || oldPosition.y < -14 || oldPosition.y > 14)
         {
             if (oldPosition.x < 0)
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
                 oldPosition.y = oldPosition.y - 1;
             }
             transform.position = new Vector2(-oldPosition.x, -oldPosition.y);
-            Debug.Log("New POsition:" + transform.position);
+            //Debug.Log("New POsition:" + transform.position);
         }
     }
 
@@ -112,21 +113,30 @@ public class PlayerController : MonoBehaviour
         //Vector3 oldPosition = transform.position;
         if (collision.tag == "Apple")
         {
-            //Destroy(collision.gameObject);
+            Debug.Log("Print apple");
             _foodcontroller = collision.GetComponent<FoodController>();
             _foodcontroller.RandomizePosition();
             Grow();
         }
+        else if (collision.tag == "Body")
+        {
+            //Death for the player
+            Die();
+        }
 
+    }
+
+    private void Die()
+    {
+        rigidbody2d.velocity = Vector2.zero;
+        gameObject.GetComponent<PlayerController>().enabled = false;               
     }
 
     private void Grow()
     {
         segment = Instantiate(this.snakeBodyPrefab);        
         segment.position = new Vector2((snakeSegments[snakeSegments.Count - 1].position.x), (snakeSegments[snakeSegments.Count - 1].position.y));
-        Debug.Log(segment.position);
         snakeSegments.Add(segment);
-        Debug.Log(snakeSegments.Count);
     }
 
 }

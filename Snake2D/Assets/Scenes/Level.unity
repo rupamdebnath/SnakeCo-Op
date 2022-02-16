@@ -665,6 +665,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6623497743546808909, guid: b5343cbf51ba8ab43b6eaf8f66c98174,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623497743546808909, guid: b5343cbf51ba8ab43b6eaf8f66c98174,
+        type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6623497743546808910, guid: b5343cbf51ba8ab43b6eaf8f66c98174,
         type: 3}
       propertyPath: m_RootOrder
