@@ -984,8 +984,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOver
       objectReference: {fileID: 0}
+    - target: {fileID: 5209173868388156223, guid: d82df8cd77d3dc241b87ece8e013b167,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d82df8cd77d3dc241b87ece8e013b167, type: 3}
+--- !u!1 &5209173869051749181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5209173868735721906, guid: d82df8cd77d3dc241b87ece8e013b167,
+    type: 3}
+  m_PrefabInstance: {fileID: 5209173869051749180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5209173869051749182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209173869051749181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d681a1fffe0538247b7d36605f707856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelName: Level1
+--- !u!1 &5209173869051749183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5209173868900920019, guid: d82df8cd77d3dc241b87ece8e013b167,
+    type: 3}
+  m_PrefabInstance: {fileID: 5209173869051749180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5209173869051749184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209173869051749183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d681a1fffe0538247b7d36605f707856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelName: Lobby
 --- !u!1001 &6623497743746382554
 PrefabInstance:
   m_ObjectHideFlags: 0
