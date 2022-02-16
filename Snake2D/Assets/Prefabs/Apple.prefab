@@ -121,4 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7ace65ba46b5841b2f1857e94eff0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridArea: {fileID: 0}
+  gridArea: {fileID: 8823941385227245551, guid: 51bd6ce08ba16f248b363b0f34f60027,
+    type: 3}
