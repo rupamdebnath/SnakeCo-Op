@@ -145,6 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snakeBodyPrefab: {fileID: 8847522718089093087, guid: 459e4e658748be74a84562b038f3f131,
     type: 3}
+  scoreController: {fileID: 3438353383111217847, guid: 728b7eab273d9f048800f4c01766e64b,
+    type: 3}
   grid: {fileID: 1521981642462358660, guid: 6afd583bd05d678428a791e40d8d5723, type: 3}
   rigidbody2d: {fileID: 6623497743546808909}
   speed: 10

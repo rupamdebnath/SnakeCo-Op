@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform snakeBodyPrefab;
 
+    public ScoreController scoreController;
+
     //private float Xpos, Ypos;
 
     private bool canMoveRight, canMoveLeft, canMoveUp, canMoveDown;
@@ -113,9 +115,10 @@ public class PlayerController : MonoBehaviour
         //Vector3 oldPosition = transform.position;
         if (collision.tag == "Apple")
         {
-            Debug.Log("Print apple");
+            //Debug.Log("Print apple");
             _foodcontroller = collision.GetComponent<FoodController>();
             _foodcontroller.RandomizePosition();
+            scoreController.IncreaseScore(10);
             Grow();
         }
         else if (collision.tag == "Body")
