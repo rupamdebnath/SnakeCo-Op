@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PlayerController : MonoBehaviour
+public class Player2Controller : MonoBehaviour
 {
     private List<Transform> snakeSegments;
 
     public Transform snakeBodyPrefab;
 
-    public ScoreController scoreController;
+    public ScoreController2 scoreController2;
 
     public GameObject gameOver;
 
@@ -24,11 +24,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 oldPosition;
     public BoxCollider2D grid;
 
-    private PlayerController p1controller;
+    private Player2Controller p2controller;
     private void Awake()
     {
-        canMoveRight= canMoveLeft= canMoveUp= canMoveDown = true;
-        p1controller = gameObject.GetComponent<PlayerController>();
+        canMoveRight = canMoveLeft = canMoveUp = canMoveDown = true;
+        p2controller = gameObject.GetComponent<Player2Controller>();
     }
     private void Start()
     {
@@ -38,12 +38,12 @@ public class PlayerController : MonoBehaviour
     }
 
     public Rigidbody2D rigidbody2d;
-    public float speed;    
+    public float speed;
 
     //Get Keyboard inputs and set movement rules, rotate the snake head as well respectively
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D) && canMoveRight) //positive
+        if (Input.GetKeyDown(KeyCode.RightArrow) && canMoveRight) //positive
         {
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
             transform.localRotation = Quaternion.Euler(0, 0, -90);
@@ -52,16 +52,16 @@ public class PlayerController : MonoBehaviour
             canMoveUp = true;
             canMoveDown = true;
         }
-        else if(Input.GetKeyDown(KeyCode.A) && canMoveLeft) //negative
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canMoveLeft) //negative
         {
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
-            transform.localRotation =  Quaternion.Euler(0, 0, 90);
+            transform.localRotation = Quaternion.Euler(0, 0, 90);
             rigidbody2d.velocity = new Vector2(-speed, 0f);
             canMoveRight = false;
             canMoveUp = true;
             canMoveDown = true;
         }
-        else if(Input.GetKeyDown(KeyCode.W) && canMoveUp) //positive
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && canMoveUp) //positive
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
@@ -70,10 +70,10 @@ public class PlayerController : MonoBehaviour
             canMoveLeft = true;
             canMoveRight = true;
         }
-        else if (Input.GetKeyDown(KeyCode.S) && canMoveDown)  //negative
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && canMoveDown)  //negative
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-            transform.localScale = new Vector3(transform.localScale.x, (Mathf.Abs(transform.localScale.y)*-1), transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x, (Mathf.Abs(transform.localScale.y) * -1), transform.localScale.z);
             rigidbody2d.velocity = new Vector2(0f, -speed);
             canMoveUp = false;
             canMoveLeft = true;
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
                 oldPosition.y = oldPosition.y + 1;
             }
             else if (oldPosition.y > 0)
-                {
+            {
                 oldPosition.y = oldPosition.y - 1;
             }
             transform.position = new Vector2(-oldPosition.x, -oldPosition.y);
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Print apple");
             _foodcontroller = collision.GetComponent<FoodController>();
             _foodcontroller.RandomizePosition();
-            scoreController.IncreaseScore(10);
+            scoreController2.IncreaseScore(10);
             Grow();
         }
         else if (collision.tag == "Body")
@@ -133,10 +133,11 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.tag == "Player")
-        {
+        if(other.collider.tag == "Player")
+        {            
             Die();
             gameOver.SetActive(true);
         }
@@ -144,13 +145,13 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        this.rigidbody2d.velocity = Vector2.zero;
-        p1controller.enabled = false;
+        this.rigidbody2d.velocity = Vector3.zero;
+        p2controller.enabled = false;
     }
 
     private void Grow()
     {
-        segment = Instantiate(this.snakeBodyPrefab);        
+        segment = Instantiate(this.snakeBodyPrefab);
         segment.position = new Vector2((snakeSegments[snakeSegments.Count - 1].position.x), (snakeSegments[snakeSegments.Count - 1].position.y));
         snakeSegments.Add(segment);
     }
