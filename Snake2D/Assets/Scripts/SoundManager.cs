@@ -50,6 +50,19 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayOnce(UISounds _sound)
+    {
+        AudioClip clip = getSoundClip(_sound);
+        if (clip != null)
+        {
+            SoundSfx.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.Log("No clip found for Sound Type");
+        }
+    }
+
     private AudioClip getSoundClip(UISounds sound)
     {
         UISoundType _soundtype = Array.Find(sounds, s => s.soundType == sound);
