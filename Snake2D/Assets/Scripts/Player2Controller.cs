@@ -136,7 +136,7 @@ public class Player2Controller : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider.tag == "Player")
+        if(other.collider.tag == "Player" || other.collider.tag == "Wall")
         {            
             Die();
             gameOver.SetActive(true);
@@ -154,6 +154,10 @@ public class Player2Controller : MonoBehaviour
         segment = Instantiate(this.snakeBodyPrefab);
         segment.position = new Vector2((snakeSegments[snakeSegments.Count - 1].position.x), (snakeSegments[snakeSegments.Count - 1].position.y));
         snakeSegments.Add(segment);
+
+        if (speed != 14)
+            speed += 1;
+    
     }
 
 }

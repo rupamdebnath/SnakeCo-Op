@@ -149,4 +149,4 @@ MonoBehaviour:
   gameOver: {fileID: 0}
   grid: {fileID: 0}
   rigidbody2d: {fileID: 6623497743546808909}
-  speed: 10
+  speed: 5

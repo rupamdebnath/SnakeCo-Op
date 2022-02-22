@@ -229,33 +229,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 37.938587, y: 26.280344}
   m_EdgeRadius: 0
---- !u!1 &170041818 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4100242784092893452, guid: 2b246f7e8f5a04f47892f8d3b111715d,
-    type: 3}
-  m_PrefabInstance: {fileID: 4100242784611812813}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &170041819
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170041818}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &374197874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,11 +2181,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4100242784092893449, guid: 2b246f7e8f5a04f47892f8d3b111715d,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4100242784092893452, guid: 2b246f7e8f5a04f47892f8d3b111715d,
         type: 3}
       propertyPath: m_Name
@@ -2409,11 +2377,6 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 2066659133}
-    - target: {fileID: 6623497743746382556, guid: b5343cbf51ba8ab43b6eaf8f66c98174,
-        type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6623497743746382556, guid: b5343cbf51ba8ab43b6eaf8f66c98174,
         type: 3}
       propertyPath: gameOver
