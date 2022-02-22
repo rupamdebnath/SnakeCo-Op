@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ScoreController2 : MonoBehaviour
 {
+    //Singleton script for SoundManager Instance
+    private static ScoreController2 instance;
+    public static ScoreController2 Instance { get { return instance; } }
 
     private TMPro.TextMeshProUGUI scoreText;
 
@@ -13,6 +16,17 @@ public class ScoreController2 : MonoBehaviour
     private void Awake()
     {
         scoreText = GetComponent<TMPro.TextMeshProUGUI>();
+
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     private void Start()

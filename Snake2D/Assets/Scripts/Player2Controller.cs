@@ -155,7 +155,7 @@ public class Player2Controller : MonoBehaviour
         segment.position = new Vector2((snakeSegments[snakeSegments.Count - 1].position.x), (snakeSegments[snakeSegments.Count - 1].position.y));
         snakeSegments.Add(segment);
 
-        if (speed != 14)
+        if (speed != 13)
             speed += 1;
     
     }
