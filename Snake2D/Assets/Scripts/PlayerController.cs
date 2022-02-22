@@ -154,6 +154,9 @@ public class PlayerController : MonoBehaviour
         segment = Instantiate(this.snakeBodyPrefab);        
         segment.position = new Vector2((snakeSegments[snakeSegments.Count - 1].position.x), (snakeSegments[snakeSegments.Count - 1].position.y));
         snakeSegments.Add(segment);
+        
+        if (speed != 14)
+            speed += 1;
     }
 
 }
