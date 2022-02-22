@@ -135,11 +135,12 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.tag == "Player")
+        if (other.collider.tag == "Player" || other.collider.tag == "Wall")
         {
             Die();
             gameOver.SetActive(true);
         }
+
     }
 
     private void Die()
